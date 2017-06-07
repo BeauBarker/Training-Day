@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// This script controlls both the raycast from the gun and the bullets that are fired from it.
+/// </summary>
 public class RaycastShoot : MonoBehaviour {
 
-	public GameObject death;
-	public float bulletSpeed;
 
-	public GameObject bulletPrefab;
-	public GameObject gunEnd;
+	public float bulletSpeed;					//bulletSpeed is the speed in which the bullet will travel
 
-	public Transform bulletSpawnPoint;
+	public GameObject bulletPrefab;				//bulletPrefab is the bullet itself that will spawn
+	public GameObject gunEnd;					//gunEnd is the end of the barrel of the gun where the bulletPrefab will spawn
 
-	public float distanceOfRay;
+	public Transform bulletSpawnPoint;			//bulletSpawnPoint is the point where the bulletPrefab will spawn
+
+	public float distanceOfRay;					//distanceOfRay is the distance the Raycast will spread froward
 
 	void Update () {
+
+		//The lines of code below states the raycasting hits as well as the distance of the raycast. If the player presses the left mouse button the gun will fire a small bullet.
+		//if the raycast hits an enemy tagged as "Target" it will destroy that enemy.
 
 		RaycastHit hit;
 
@@ -39,6 +44,8 @@ public class RaycastShoot : MonoBehaviour {
 
 			}
 			
+		//This will spawn a bulletPrefab at the end of the gun barrel and push it forward with a force everytime the player presses the left ouse button.
+
 
 			if (Input.GetMouseButtonDown (0)) {
 				GameObject GO = Instantiate (bulletPrefab, bulletSpawnPoint.position, Quaternion.identity) as GameObject;
